@@ -16,6 +16,11 @@ include(${board}/board_files.cmake)
 include(${SdkRootDirPath}/CMakeLists.txt)
 
 
+mcux_add_macro(
+    CC "-DPRINTF_ADVANCED_ENABLE=1\
+       -DPRINTF_FLOAT_ENABLE=1"
+)
+
 mcux_add_source(
     SOURCES hello_world.c
 )

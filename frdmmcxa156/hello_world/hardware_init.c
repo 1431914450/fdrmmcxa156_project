@@ -5,15 +5,17 @@
  */
 /*${header:start}*/
 #include "pin_mux.h"
-#include "fsl_clock.h"
-#include "fsl_reset.h"
+#include "clock_config.h"
 #include "board.h"
-#include <stdbool.h>
 /*${header:end}*/
 
 /*${function:start}*/
 void BOARD_InitHardware(void)
 {
+    /* Attach peripheral clock for I3C0 */
+    CLOCK_SetClockDiv(kCLOCK_DivI3C0_FCLK, 4U);
+    CLOCK_AttachClk(kFRO_HF_DIV_to_I3C0FCLK);
+
     BOARD_InitPins();
     BOARD_InitBootClocks();
     BOARD_InitDebugConsole();

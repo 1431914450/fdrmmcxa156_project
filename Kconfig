@@ -1,11 +1,36 @@
-# It is optional to provide example specific Kconfig.
-
-mainmenu "Hello World"
-
-# Need to refer the root Kconfig.mcuxpreso to get all Kconfig data
-source "${SdkRootDirPath}/Kconfig.mcuxpresso"
-
-# Board example specific Kconfig can be linked in this way if needed
+# It is optional to provide example specific Kconfig.
+
+mainmenu "Hello World"
+
+menu "Project Settings"
+
+config EXAMPLE_I2C_BAUDRATE
+    int "I2C mode baud rate"
+    default 400000
+    help
+        No prefix in generated macro
+        type unsigned
+
+config EXAMPLE_I3C_OD_BAUDRATE
+    int "I3C open-drain mode baud rate"
+    default 1500000
+    help
+        No prefix in generated macro
+        type unsigned
+
+config EXAMPLE_I3C_PP_BAUDRATE
+    int "I3C push-pull mode baud rate"
+    default 4000000
+    help
+        No prefix in generated macro
+        type unsigned
+
+endmenu
+
+# Need to refer the root Kconfig.mcuxpreso to get all Kconfig data
+source "${SdkRootDirPath}/Kconfig.mcuxpresso"
+
+# Board example specific Kconfig can be linked in this way if needed
 osource "${SdkRootDirPath}/${project_board_port_path}/Kconfig"
 config CUSTOM_APP_HELLO_WORLD
     bool
