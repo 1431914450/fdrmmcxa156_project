@@ -1,0 +1,20 @@
+# It is optional to provide example specific Kconfig.
+
+mainmenu "Hello World"
+
+# Need to refer the root Kconfig.mcuxpreso to get all Kconfig data
+source "${SdkRootDirPath}/Kconfig.mcuxpresso"
+
+# Board example specific Kconfig can be linked in this way if needed
+osource "${SdkRootDirPath}/${project_board_port_path}/Kconfig"
+config CUSTOM_APP_HELLO_WORLD
+    bool
+    default y
+    select MCUX_PRJSEG_config.arm.warn_as_error
+    select MCUX_PRJSEG_config.arm.shared
+    select MCUX_PRJSEG_config.kinetis.shared
+    select MCUX_PRJSEG_config.device_core.define
+    select MCUX_PRJSEG_config.arm.core.fpu.fpv5_sp
+    select MCUX_PRJSEG_config.arm.core.cm33_dsp_nosau
+    select MCUX_COMPONENT_CMSIS_Include_core_cm
+    select MCUX_PRJSEG_module.device.suite
